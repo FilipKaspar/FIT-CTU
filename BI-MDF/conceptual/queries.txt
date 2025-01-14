@@ -1,0 +1,3 @@
+1. Show how many stores published at least 2 games.
+2. Show all developers that are working on at least 1 game and have 28 or more years of experience.
+3. Show all players that own at least 1 game. Show which games + PlayerName and nickname join to one string splitted with dash.

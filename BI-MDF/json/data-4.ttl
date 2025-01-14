@@ -1,0 +1,16 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <https://example.com/> .
+
+@prefix developers: <https://example.org/developers/> .
+
+developers:EA a ex:Developer ;
+    ex:developerName "Electronic Arts" @en ;
+    ex:years_of_experience 30 .
+
+developers:Valve a ex:Developer ;
+    ex:developerName "Valve Corporation" @en ;
+    ex:years_of_experience 26 .
+
+
+developers:Activision a ex:Developer ;
+    ex:developerName "Activision" @en .

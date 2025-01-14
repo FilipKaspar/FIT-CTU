@@ -1,0 +1,11 @@
+# Show how many stores published at least 2 games.
+PREFIX ex: <https://example.com/>
+PREFIX stores: <https://example.org/stores/>
+
+
+SELECT DISTINCT ?Stores (COUNT(?Name) AS ?Count)
+WHERE {
+    ?Stores ex:publishes ?Name ;
+}
+GROUP BY(?Stores)
+HAVING(COUNT(?Name) >= 2)

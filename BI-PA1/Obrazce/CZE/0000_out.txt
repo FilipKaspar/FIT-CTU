@@ -1,0 +1,4 @@
+Obrazec #1
+Obrazec #2
+Obvod: ctverec #1 < obdelnik #2
+Obsah: ctverec #1 = obdelnik #2

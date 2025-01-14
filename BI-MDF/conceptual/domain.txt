@@ -1,0 +1,38 @@
+Description:
+----------
+My semester work focuses on how games are developed, distributed and played. It describes how developers, games, stores and players interact with each other. For example player to be consider a player has to have at least 1 game. On the other hand developer can develop multiple game at the same time.
+
+Entities:
+----------
+1. Store
+2. Game
+3. Player
+4. Developer
+
+Each entity has a name and one more coresponding atribute that relates to it's purpose.
+
+1. Store
+	- Name - Name of the store
+	- Reputation - Reputation of the store
+		 
+	Store can own as much games as it wants to.
+		 
+2. Game 
+	- Name - Name of the game
+	- Revenue - How much money game made over time
+		
+	Game can be released only in one store.
+	Game can be played by many players.
+	Game can be developed by many developers.
+	
+3. Developer
+	- Name - Name of the developer
+	- Years of experience - How long is developer in game developing industry
+			 
+	Developer can develop many games at the same time.
+			 
+4. Player 
+	- Name - Real name of a player
+	- Nickname - Player's nickname
+	
+	Player has to own at least 1 game to be considered a player.

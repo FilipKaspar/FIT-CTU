@@ -1,0 +1,16 @@
+version: '3'
+services:
+  php:
+    image: 'gitlab.fit.cvut.cz:5050/bi-php/bi-php-docker/php:8.2'
+    # for linux 'gitlab.fit.cvut.cz:5050/bi-php/bi-php-docker/php:8.2-linux'
+    restart: on-failure
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "9000:9000"
+    networks:
+      - internal
+
+
+networks:
+  internal:

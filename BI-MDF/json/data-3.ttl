@@ -1,0 +1,14 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <https://example.com/> .
+
+@prefix games: <https://example.org/games/> .
+
+games:LOL a ex:Game ;
+    ex:gameName "League of Legends" @en ;
+    ex:revenue 1750000000 .
+
+games:Crysis a ex:Game ;
+    ex:gameName "Crysis 1" @en ;
+    ex:revenue 180000000 .
+
+games:Human_Machine_Resource a ex:Game .

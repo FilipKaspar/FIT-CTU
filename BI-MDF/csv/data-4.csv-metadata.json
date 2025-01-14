@@ -1,0 +1,40 @@
+{
+    "@id": "https://example.org/stores/data-4.csv-metadata.json",
+    "@context": [
+        "http://www.w3.org/ns/csvw",
+        {
+            "@language": "en"
+        }
+    ],
+    "@type": "Table",
+    "url": "data-4.csv",
+    "tableSchema": {
+        "@type": "Schema",
+        "columns": [
+            {
+                "@type": "Column",
+                "name": "iri",
+                "titles": "iri",
+                "dc:description": "Game IRI",
+                "datatype": "anyURI"
+            },
+            {
+                "@type": "Column",
+                "name": "developerName",
+                "titles": "developerName",
+                "dc:description": "Developer name",
+                "datatype": "normalizedString"
+            },
+            {
+                "@type": "Column",
+                "name": "years_of_experience",
+                "titles": "years_of_experience",
+                "dc:description": "Developer years_of_experience",
+                "datatype": "nonNegativeInteger"
+            }
+        ],
+        "primaryKey": "iri"
+    }
+}
+
+

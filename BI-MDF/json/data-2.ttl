@@ -1,0 +1,12 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <https://example.com/> .
+
+@prefix stores: <https://example.org/stores/> .
+
+stores:Steam a ex:Store ;
+    ex:storeName "Steam" @en ;
+    ex:reputation 8 .
+
+stores:Ubisoft a ex:Store ;
+    ex:storeName "Ubisoft" @en ;
+    ex:reputation 6 .

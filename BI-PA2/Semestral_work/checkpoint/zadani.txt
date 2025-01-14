@@ -1,0 +1,74 @@
+Téma : SuprDuprKalendaros
+Autor: Filip Kašpar
+
+Požadavky:
+	Kalendář
+
+	Aplikace pro správu kalendáře s možností vytvářet události a jejich hledání.
+
+	Implementujte následující funcionalitu:
+
+	denní, týdenní a měsíční zobrazení kalendáře
+	vytvářet a spravovat události (čas, místo, datum, účastníci, ...)
+	možnost nastavit události opakování (jednou za týden, 14 dní, ...)
+	hledat události podle názvu a/nebo místa konání
+	hledat nejbližší možný termín a možnost přesouvat události
+	exportování a importování událostí
+	Použití polymorfismu (doporučené)
+
+	druhy událostí: povinná, volitelná, přesunutelná, ...
+	strategie přesunů: nejbližší možný (s omezením), nejbližší možný s přesunutím X jiných událostí
+	zobrazení kalendáře (denní, týdenní, měsíční)
+	formáty exportovaných událostí
+	Dobrovolné možné rozšíření:
+
+	GUI - pomocí některé z dovolených knihoven
+	importování iCalendar (ics) formátu dat
+	Další informace:
+
+	http://en.cppreference.com/w/cpp/chrono
+	https://en.wikipedia.org/wiki/ICalendar
+	
+Vlastní zadání:
+	Kalendář bude umět vyhledávat mezi všemi událostmi pomocí více parametrů, jako například datumu, nebo jak moc je událost důležitá. V každém typu kalendáře, což může být buďto denní, týdenní nebo měsíční, budeme moc vypočítat celkový počet událostí. Všechny tyto záznamy se budou ukládat do paměti, pouze při použítí funkce export se pole těchto záznamů uloží jako .csv soubor, z kterého budeme moci později načítat jednotlivé události. Čas bude uchováván v hodinách a minutách, což znamená, že uživatel nebude moci mít více událostí ve stejnou dobu, ale např. o minutu "vedle".
+	
+	
+	CSV je vybrán kvůli své přehlednosti a relativně jednoduchému ovládání.
+	
+	Vypisování kalendáře Day bude vypadat následovně:
+	Day |  Nazev   | Detaily
+	-------------------------------
+	1:00  Udalost 1
+		  Udalost 2
+	2:00
+	3:00
+	
+	Vypisování kalendáře Week bude vypadat následovně:
+	  Monday   |  Tuesday  | Wednesday | ...
+	----------------------------------------
+	Udalost 1    Udalost 1    Udalost 1
+	Udalost 2    Udalost 2    Udalost 2
+	
+	Po vyhledaní dané události si zobrazíme detaily.
+	
+	
+	Vypisování kalendáře Month bude vypadat následovně:
+	Monday   |  Tuesday  | Wednesday | ...
+	----------------------------------------
+	Udalost 1    Udalost 1    Udalost 1
+	Udalost 2    Udalost 2    Udalost 2
+	
+	Monday   |  Tuesday  | Wednesday | ...
+	----------------------------------------
+	Udalost 1    Udalost 1    Udalost 1
+	Udalost 2    Udalost 2    Udalost 2
+	
+	Monday   |  Tuesday  | Wednesday | ...
+	----------------------------------------
+	Udalost 1    Udalost 1    Udalost 1
+	Udalost 2    Udalost 2    Udalost 2
+	
+Polymorfizmus gde:
+	Polymorfizmus mám obsažený ve tříde CCalender, která je virtualní a z které dědí funkce CCalenderDay, CCalenderWeek a CCalenderMonth. Všechny tyto třídy mají overridnuté methody pro výpis kalendáře a pro součet všech záznamů. K tomu má navíc třída CCalenderMonth přidanou funkci getDays, která se stará o získání počtu dnů v daném měsíci.
+	
+	Polymorfizmus je využit primárně pro snadnější prácí při výpisu a zkrácení kódu, výpis by se dal napsat i bez polymorfismu, ale nebyl by tolik přehledný.

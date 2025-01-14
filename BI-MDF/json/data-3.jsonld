@@ -1,0 +1,39 @@
+{
+    "@context" : {
+        "ex" : "https://example.com/",
+        "games" : "https://example.org/games/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "type" : "@type",
+        "iri" : "@id",
+        "gameName" : {
+            "@id" : "ex:gameName",
+            "@container" : "@language"
+        },
+        "revenue" : {
+            "@id" : "ex:revenue",
+            "@type" : "xsd:integer"
+        }
+    },
+    "@graph" : [
+        {
+            "type" : "ex:Game",
+            "iri" : "games:LOL",
+            "gameName" : {
+                "en" : "League of Legends"
+            },
+            "revenue" : 1750000000
+        },
+        {
+            "type" : "ex:Game",
+            "iri" : "games:Crysis",
+            "gameName" : {
+                "en" : "Crysis 1"
+            },
+            "revenue" : 180000000
+        },
+        {
+            "type" : "ex:Game",
+            "iri" : "games:Human_Machine_Resource"
+        }
+    ]
+}

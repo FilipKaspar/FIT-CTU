@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Players xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema-1.xsd">
+    <Player>
+        <iri>players:Petr</iri>
+        <playerName xml:lang="cs">Petros</playerName>
+        <nickname xml:lang="cs">Fregy</nickname>
+    </Player>
+    <Player>
+        <iri>players:Karel</iri>
+        <playerName xml:lang="cs">Zdepa</playerName>
+        <nickname xml:lang="cs">Zdp4XXX</nickname>
+    </Player>
+</Players>

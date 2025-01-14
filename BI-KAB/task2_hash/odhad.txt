@@ -1,0 +1,26 @@
+Odhadněte dobu hledání zprávy, jejíž hash je tvořena posloupností 512 nulovými bity.
+
+Pro tento odhad použiju měření vytváření hashe z courses (ne tedy moje data, který jsou v pdfku).
+Víme, že pro:
+3 bity = 10 (nejspíš ms)
+4 bity = 20
+5 bitů = 40
+6 bitů = 100
+7 bitů = 200
+8 bitů = 400
+
+Když pomineme přechod z 5 bitů na 6, který nám rozbíjí pattern, že každé další číslo vynásobíme dvěma.
+Pattern bude:
+a1 = 2.5
+an = 2 * an-1
+
+Můžeme převést na:
+	an = 2^an-1 * a1
+
+Tedy podle patternu můžeme např. rekurzivně spočítat a512.
+Což odpovídá:
+	a512 = 4.0365 x 10^154 ms
+	Tedy na sekundy = 4.0365 x 10^148 s
+	A na roky = 1.279 x 10^141 years
+	
+Tedy odhad: Zhruba hodně :D (pokud počítám správně)

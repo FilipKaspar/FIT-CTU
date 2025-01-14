@@ -1,0 +1,144 @@
+@prefix ex: <https://example.com/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+@prefix players: <https://example.org/players/> .
+@prefix stores: <https://example.org/stores/> .
+@prefix games: <https://example.org/games/> .
+@prefix developers: <https://example.org/developers/> .
+
+
+#PLAYERS
+ex:Player a  rdfs:Class ;
+    rdfs:label "Player"@en, "Hráč" @cs .
+
+ex:playerName a rdf:Property ;
+    rdfs:label "Name of the player" @en, "Jméno hráče" @cs ;
+    rdfs:domain ex:Player ;
+    rdfs:range rdf:langString .
+
+ex:nickname a rdf:Property ;
+    rdfs:label "Nickname of the player" @en, "Přezdívka hráče" @cs ;
+    rdfs:domain ex:Player ;
+    rdfs:range rdf:langString .
+
+
+players:Petr a ex:Player ;
+    ex:playerName "Petros" @cs;
+    ex:nickname "Fregy" @cs.
+
+players:Karel a ex:Player ;
+    ex:playerName "Zdepa" @cs;
+    ex:nickname "Zdp4XXX" @cs.
+
+
+#STORES
+ex:Store a rdfs:Class;
+    rdfs:label "Store" @en, "Obchod" @cs .
+
+ex:storeName a rdf:Property ;
+    rdfs:label "Name of the store" @en, "Jméno obchodu" @cs ;
+    rdfs:domain ex:Store ;
+    rdfs:range rdf:langString .
+
+ex:reputation a rdf:Property ;
+    rdfs:label "Store's reputation" @en, "Reputace obchodu" @cs ;
+    rdfs:domain ex:Store ;
+    rdfs:range xsd:integer .
+
+
+stores:Steam a ex:Store ;
+    ex:storeName "Steam" @en ;
+    ex:reputation 8 .
+
+stores:Ubisoft a ex:Store ;
+    ex:storeName "Ubisoft" @en ;
+    ex:reputation 6 .
+    
+
+#GAMES
+ex:Game a rdfs:Class;
+    rdfs:label "Game" @en, "Hra" @cs .
+
+ex:gameName a rdf:Property ;
+    rdfs:label "Name of the game" @en, "Jméno hry" @cs ;
+    rdfs:domain ex:Game ;
+    rdfs:range rdf:langString .
+
+ex:revenue a rdf:Property ;
+    rdfs:label "Game's revenue" @en, "Výnostnost hry" @cs ;
+    rdfs:domain ex:Game ;
+    rdfs:range xsd:integer .
+
+
+games:LOL a ex:Game ;
+    ex:gameName "League of Legends" @en ;
+    ex:revenue 1750000000 .
+
+games:Crysis a ex:Game ;
+    ex:gameName "Crysis 1" @en ;
+    ex:revenue 180000000 .
+
+games:Human_Machine_Resource a ex:Game .
+
+
+#DEVELOPERS
+ex:Developer a rdfs:Class;
+    rdfs:label "Developer" @en, "Vývojář" @cs .
+
+ex:developerName a rdf:Property ;
+    rdfs:label "Nme of the developer" @en, "Jméno vývojáře" @cs ;
+    rdfs:domain ex:Developer ;
+    rdfs:range rdf:langString .
+
+ex:years_of_experience a rdf:Property ;
+    rdfs:label "Developer's years of experience" @en, "Počet vývojářovo let zkušeností" @cs ;
+    rdfs:domain ex:Developer ;
+    rdfs:range xsd:integer .
+
+
+developers:EA a ex:Developer ;
+    ex:developerName "Electronic Arts" @en ;
+    ex:years_of_experience 30 .
+
+developers:Valve a ex:Developer ;
+    ex:developerName "Valve Corporation" @en ;
+    ex:years_of_experience 26 .
+
+
+developers:Activision a ex:Developer ;
+    ex:developerName "Activision" @en .
+
+
+#ASSOCIATIONS
+ex:owns a rdf:Property ;
+    rdfs:label "Player owns game(s)" @en, "Hráč vlastní hru/hry" @cs ;
+    rdfs:domain ex:Player ;
+    rdfs:range ex:Game .
+
+players:Petr ex:owns games:LOL .
+players:Karel ex:owns games:Crysis .
+players:Karel ex:owns games:LOL .
+
+
+
+ex:publishes a rdf:Property ;
+    rdfs:label "Store publishes game(s)" @en, "Obchod vydává hru/hry" @cs ;
+    rdfs:domain ex:Store ;
+    rdfs:range ex:Game .
+
+stores:Steam ex:publishes games:LOL .
+stores:Steam ex:publishes games:Crysis .
+stores:Ubisoft ex:publishes games:Crysis .
+
+
+
+ex:develops a rdf:Property ;
+    rdfs:label "Developer develops game(s)" @en, "Vývojář vyvíjí hru/hry" @cs ;
+    rdfs:domain ex:Developer ;
+    rdfs:range ex:Game .
+
+developers:Valve ex:develops games:LOL .
+developers:EA ex:develops games:Crysis .

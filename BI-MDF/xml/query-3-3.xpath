@@ -1,0 +1,2 @@
+(: Query3: Show all games that have language tag in english :)
+//Games/Game/gameName[@lang = 'en']

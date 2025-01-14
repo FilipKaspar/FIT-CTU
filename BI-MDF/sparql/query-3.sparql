@@ -1,0 +1,18 @@
+# Show all players that own at least 1 game. Show which games + PlayerName and nickname join to one string splitted with dash.
+# Show as RDF triples
+PREFIX ex: <https://example.com/>
+PREFIX games: <https://example.org/games/>
+PREFIX players: <https://example.org/players/>
+
+
+CONSTRUCT
+{
+    ?Player ex:owns ?games ;
+        ex:playerName ?Player_Name .
+}
+WHERE {
+    ?Player ex:owns ?games ;
+        ex:playerName ?name ;
+        ex:nickname ?nickname .
+    BIND(CONCAT(?name, " - "@cs, ?nickname) AS ?Player_Name)
+}

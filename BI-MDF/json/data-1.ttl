@@ -1,0 +1,12 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <https://example.com/> .
+
+@prefix players: <https://example.org/players/> .
+
+players:Petr a ex:Player ;
+    ex:playerName "Petros" @cs;
+    ex:nickname "Fregy" @cs.
+
+players:Karel a ex:Player ;
+    ex:playerName "Zdepa" @cs;
+    ex:nickname "Zdp4XXX" @cs.

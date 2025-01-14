@@ -1,0 +1,42 @@
+{
+    "@context" : {
+        "ex" : "https://example.com/",
+        "developers" : "https://example.org/developers/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "type" : "@type",
+        "iri" : "@id",
+        "developerName" : {
+            "@id" : "ex:developerName",
+            "@container" : "@language"
+        },
+        "years_of_experience" : {
+            "@id" : "ex:years_of_experience",
+            "@type" : "xsd:integer"
+        }
+    },
+    "@graph" : [
+        {
+            "type" : "ex:Developer",
+            "iri" : "developers:EA",
+            "developerName" : {
+                "en" : "Electronic Arts"
+            },
+            "years_of_experience" : 30
+        },
+        {
+            "type" : "ex:Developer",
+            "iri" : "developers:Valve",
+            "developerName" : {
+                "en" : "Valve Corporation"
+            },
+            "years_of_experience" : 26
+        },
+        {
+            "type" : "ex:Developer",
+            "iri" : "developers:Activision",
+            "developerName" : {
+                "en" : "Activision"
+            }
+        }
+    ]
+}

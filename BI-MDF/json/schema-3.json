@@ -1,0 +1,22 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.org/public-contracts-schema.json",
+    "type" : "object",
+    "@graph": {  
+        "type": "array",
+        "title": "Games",
+     	"items": {
+            "type": "object",
+            "iri": "Game",
+            "minItems": 0,
+            "properties": {
+                "gameName": {
+                    "type": "string"
+                },
+                "revenue": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

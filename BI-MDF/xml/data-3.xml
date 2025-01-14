@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Games xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema-3.xsd">
+    <Game>
+        <iri>games:LOL</iri>
+        <gameName xml:lang="en">League of Legends</gameName>
+        <revenue>1750000000</revenue>
+    </Game>
+    <Game>
+        <iri>games:Crysis</iri>
+        <gameName xml:lang="en">Crysis 1</gameName>
+        <revenue>180000000</revenue>
+    </Game>
+    <Game>
+        <iri>games:Human_Machine_Resource</iri>
+    </Game>
+</Games>

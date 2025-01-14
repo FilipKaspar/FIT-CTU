@@ -1,0 +1,2 @@
+(: Query2: Show all information about stores that have reputation bigger than 5 :)
+//Stores/Store[reputation > 5]

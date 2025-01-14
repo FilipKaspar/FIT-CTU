@@ -1,0 +1,7 @@
+ECB
+------
+Tato šifra šifruje otevřené bloky každý zvlášť. Můžeme najít shodné bloky. Tedy v našem případě lze odvodit původní otevřený text dat. Jelikož se šifruje pouze stejný blok, tak v našem případě s obrázky, zašifrování změní pouze barvu každého bloku.
+
+CBC
+------
+Tento operační mód šifruje otevřené bloky spolu s předešlým již zašifrovaným blokem. Tedy je o mnohem težší získat data otevřeného textu. Tato šifra v našem případě kompletně změní data obrázku.

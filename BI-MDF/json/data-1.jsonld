@@ -1,0 +1,39 @@
+{
+    "@context" : {
+        "ex" : "https://example.com/",
+        "players" : "https://example.org/players/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "type" : "@type",
+        "iri" : "@id",
+        "playerName" : {
+            "@id" : "ex:playerName",
+            "@container" : "@language"
+        },
+        "nickname" : {
+            "@id" : "ex:nickname",
+            "@container" : "@language"
+        }
+    },
+    "@graph" : [
+        {
+            "type" : "ex:Player",
+            "iri" : "players:Petr",
+            "playerName" : {
+                "cs" : "Petros"
+            },
+            "nickname" : {
+                "cs" : "Fregy"
+            }
+        },
+        {
+            "type" : "ex:Player",
+            "iri" : "players:Karel",
+            "playerName" : {
+                "cs" : "Zdepa"
+            },
+            "nickname" : {
+                "cs" : "Zdp4XXX"
+            }
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+# Show all developers that are working on at least 1 game and have 28 or more years of experience.
+PREFIX ex: <https://example.com/>
+PREFIX developers: <https://example.org/developers/>
+PREFIX games: <https://example.org/games/>
+
+
+SELECT ?Developer_name ?Years_of_experience
+WHERE {
+    ?Developer_name ex:develops ?Game ;
+        ex:years_of_experience  ?Years_of_experience .
+    FILTER(?Years_of_experience >= 28)
+}

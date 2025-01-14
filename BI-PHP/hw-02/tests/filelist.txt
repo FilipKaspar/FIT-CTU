@@ -1,0 +1,10 @@
+tests/public/PriceTest.php
+tests/public/SortTest.php.asc
+tests/public/SortTest.php
+tests/public/PriceTest.php.asc
+tests/public/TotalPriceTest.php
+tests/public/TotalPriceTest.php.asc
+tests/private/PrivateTestsTest.php.gpg
+tests/private/PrivateTestsTest.php.gpg.asc
+tests/filelist.txt.asc
+tests/filelist.txt

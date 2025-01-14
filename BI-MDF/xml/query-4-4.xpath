@@ -1,0 +1,2 @@
+(: Query4: Select the last added developer into the list :)
+//Developers/Developer[last()]

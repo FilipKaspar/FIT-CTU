@@ -1,0 +1,2 @@
+(: Query1: What is the nickname of User "Karel" :)
+//Players/Player[iri = 'players:Karel']/nickname

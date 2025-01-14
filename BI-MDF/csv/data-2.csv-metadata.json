@@ -1,0 +1,39 @@
+{
+    "@id": "https://example.org/stores/data-2.csv-metadata.json",
+    "@context": [
+        "http://www.w3.org/ns/csvw",
+        {
+            "@language": "en"
+        }
+    ],
+    "@type": "Table",
+    "url": "data-2.csv",
+    "tableSchema": {
+        "@type": "Schema",
+        "columns": [
+            {
+                "@type": "Column",
+                "name": "iri",
+                "titles": "iri",
+                "dc:description": "Store IRI",
+                "datatype": "anyURI"
+            },
+            {
+                "@type": "Column",
+                "name": "storeName",
+                "titles": "storeName",
+                "dc:description": "Store name",
+                "datatype": "normalizedString"
+            },
+            {
+                "@type": "Column",
+                "name": "reputation",
+                "titles": "reputation",
+                "dc:description": "Store reputation",
+                "datatype": "nonNegativeInteger"
+            }
+        ],
+        "primaryKey": "iri"
+    }
+}
+

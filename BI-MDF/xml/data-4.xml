@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Developers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema-4.xsd">
+    <Developer>
+        <iri>developers:EA</iri>
+        <developerName xml:lang="en">Electronic Arts</developerName>
+        <years_of_experience>30</years_of_experience>
+    </Developer>
+    <Developer>
+        <iri>developers:Valve</iri>
+        <developerName xml:lang="en">Valve Corporation</developerName>
+        <years_of_experience>26</years_of_experience>
+    </Developer>
+    <Developer>
+        <iri>developers:Activision</iri>
+        <developerName xml:lang="en">Activision</developerName>
+    </Developer>
+</Developers>
