@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/{% block cor_css %}{% endblock %}.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/variables.css">
+
+    <script rel="stylesheet" src="/js/layout.js" defer></script>
+    {% block extra_links %}{% endblock %}
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div class="page_wrap">
+        {% block navbar %}
+            <nav>
+                <div class="nav_content">
+                    <a href="{{ path('index') }}" id="nav_title" class="nav_item">Evidence zaměstnanců</a>
+                    <div class="find_wrapper">
+                        <div class="autocomplete-container">
+                            <div class="autocomplete">
+                                <label for="autocompleteInput">Select a Role:</label>
+                                <input type="text" id="autocompleteInput" placeholder="Choose a role...">
+                                <div class="autocomplete-options" id="autocompleteOptions"></div>
+                            </div>
+                        </div>
+                        <form method="POST" action="{{ path('search_result') }}" id="search_form">
+                            <input type="search" name="search" id="employeeSearch" placeholder="Find an employee..."><br>
+                            <button type="submit">Najít zaměstnance</button>
+                            <div class="autocomplete-options" id="autocompleteOptionsName"></div>
+                        </form>
+                        <a href="{{ path('create_edit_user', {id: -1}) }}" class="nav_item">Create User</a>
+                        <a href="{{ path('all_employees') }}" class="nav_item">Všichni Zaměstnanci</a>
+                    </div>
+                </div>
+            </nav>
+        {% endblock %}
+        {% block content %}
+
+        {% endblock %}
+        {% block footer %}
+            <footer>
+            </footer>
+        {% endblock %}
+    </div>
+</body>
+</html>

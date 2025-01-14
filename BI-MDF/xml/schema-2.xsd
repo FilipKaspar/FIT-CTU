@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
+<xs:include schemaLocation="langtag.xsd"/>
+    <xs:element name="iri" type="xs:string"/>
+    <xs:element name="storeName" type="LangTag"/>
+    <xs:element name="reputation" type="xs:integer"/>
+    <xs:element name="Store">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="iri"/>
+                <xs:element ref="storeName" minOccurs="0"/>
+                <xs:element ref="reputation" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Stores">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Store" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

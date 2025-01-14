@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block js %}
+    <script src="/js/profile.js" defer></script>
+{% endblock %}
+
+{% block content %}
+    <h1>Uživatelský profil {{ user.name }} ({{ user.email }})</h1>
+    <div class="form-block">
+        <form action="{{ path('app_change_user_name', {'userId' : user.id}) }}" method="post">
+            <h2>Změnit jméno</h2>
+            <div class="form-fields">
+                <label>Původní jméno</label>
+                <span>{{ user.name }}</span>
+
+                <label for="name">Nové jméno</label>
+                <input type="text" id="name" name="_name" required>
+            </div>
+
+            <button type="submit">Změnit jméno</button>
+        </form>
+        <form action="{{ path('app_change_user_email', {'userId' : user.id}) }}" method="post">
+            <h2>Změnit email</h2>
+            <div class="form-fields">
+                <label>Starý email</label>
+                <span>{{ user.email }}</span>
+
+                <label for="email">Nový email</label>
+                <input type="email" id="email" name="_email" required>
+            </div>
+
+            <button type="submit">Změnit email</button>
+        </form>
+        <form id="changePassword" action="{{ path('app_change_user_password', {'userId' : user.id}) }}" method="post">
+            <h2>Změnit heslo</h2>
+            <div class="form-fields">
+                <label for="old-password">Staré heslo</label>
+                <input type="password" id="old-password" name="_old_password" value="{{ previous_input.old_password | default('') }}" required>
+
+                <label for="new-password">Nové heslo</label>
+                <input type="password" id="new-password" name="_new_password" value="{{ previous_input.new_password | default('') }}" required>
+
+                <label for="confirm-password">Potvrdit heslo</label>
+                <input type="password" id="confirm-password" name="_confirm_password" value="{{ previous_input.confirm_password | default('') }}" required>
+            </div>
+
+            <button type="submit">Změnit heslo</button>
+        </form>
+    </div>
+{% endblock %}

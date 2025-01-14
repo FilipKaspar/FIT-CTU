@@ -1,0 +1,38 @@
+{
+    "@id": "https://example.org/players/data-1.csv-metadata.json",
+    "@context": [
+        "http://www.w3.org/ns/csvw",
+        {
+            "@language": "en"
+        }
+    ],
+    "@type": "Table",
+    "url": "data-1.csv",
+    "tableSchema": {
+        "@type": "Schema",
+        "columns": [
+            {
+                "@type": "Column",
+                "name": "iri",
+                "titles": "iri",
+                "dc:description": "Player IRI",
+                "datatype": "anyURI"
+            },
+            {
+                "@type": "Column",
+                "name": "playerName",
+                "titles": "playerName",
+                "dc:description": "Player name",
+                "datatype": "normalizedString"
+            },
+            {
+                "@type": "Column",
+                "name": "nickname",
+                "titles": "nickname",
+                "dc:description": "Player nickname",
+                "datatype": "normalizedString"
+            }
+        ],
+        "primaryKey": "iri"
+    }
+}

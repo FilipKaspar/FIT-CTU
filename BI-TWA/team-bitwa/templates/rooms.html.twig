@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Učebny{% endblock %}
+
+{% block js %}
+    <script src="/js/rooms.js" defer></script>
+{% endblock %}
+
+{% block content %}
+    <h1>Učebny</h1>
+
+    {% if rooms is empty %}
+
+        <p>Nebyly nalezeny žádné učebny. Pro zobrazení neveřejných učeben je potřeba být přihlášen správným účtem.</p>
+
+    {% else %}
+
+        <table>
+            <thead>
+            <tr>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th class="id-col">ID</th>
+                {% endif %}
+                <th>Učebna</th>
+                <th>Stav</th>
+                <th>Přístupnost</th>
+                <th>Skupina</th>
+                <th>Mám přístup</th>
+                {% if app.user %}
+                    <th colspan="2">Akce</th>
+                {% endif %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for room in rooms | sort((a, b) => a.fullName <=> b.fullName) %}
+                <tr id="room-{{ room.id }}">
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <td class="id-col">{{ room.id }}</td>
+                    {% endif %}
+                    <td>
+                        <a href="{{ path('app_room', {'id': room.id}) }}"><b>{{ room.building }}:{{ room.name }}</b></a>
+                    </td>
+                    <td>
+                        {% if currentAvailabilityMap[room.id] %}
+                            Volná
+                        {% else %}
+                            Obsazená
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if room.public %}
+                            Veřejná
+                        {% else %}
+                            Soukromá
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if room.group %}
+                            {{ room.group.name }}
+                        {% else %}
+                            <span class="extra">Žádná</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if room in bookableRooms %}
+                            &#10003; Ano
+                        {% else %}
+                            &#10007; Ne
+                        {% endif %}
+                    </td>
+                    {% if app.user %}
+                        <td>
+                            {% if room in bookableRooms or is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('app_book', {'room': room.id}) }}">
+                                    Rezervovat{% if room in manageableRooms or is_granted('ROLE_ADMIN') %} jako správce{% endif %}
+                                </a>
+                            {% endif %}
+                        </td>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <td>
+                            <button class="danger" onclick="deleteRoom({{ room.id }}, '{{ room.getFullName() }}')">
+                                <img class="wide a" src="/images/trash-red.svg" alt="Odebrat místnost">
+                                <span>Odebrat</span>
+                            </button>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            {% if is_granted('ROLE_ADMIN') %}
+                <tr>
+                    <td colspan="8" class="center"><a id="new-room-button" href="#">Přidat učebnu</a></td>
+                </tr>
+            {% endif %}
+            </tbody>
+        </table>
+
+    {% endif %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <div id="new-room-modal" class="modal-shade">
+            <form class="modal-window" action="{{ path('app_create_room') }}" method="post">
+                <h2>Nová učebna</h2>
+                <div class="form-fields">
+                    <label for="building_name">Název budovy:</label>
+                    <input type="text" id="building_name" name="_building_name"
+                           value="{{ previous_input.building_name | default('') }}" required>
+
+                    <label for="room_name">Název učebny:</label>
+                    <input type="text" id="room_name" name="_room_name"
+                           value="{{ previous_input.room_name | default('') }}" required>
+
+                    <label for="is_public">Přístupná veřejnosti</label>
+                    <input type="checkbox" id="is_public" name="_is_public"
+                           {% if previous_input is defined and previous_input.is_public == 1 %}checked{% endif %}>
+                </div>
+                <button type="submit">Vytvořit učebnu</button>
+            </form>
+        </div>
+    {% endif %}
+
+{% endblock %}

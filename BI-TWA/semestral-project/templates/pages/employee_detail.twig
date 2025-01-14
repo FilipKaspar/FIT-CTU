@@ -1,0 +1,67 @@
+{% extends "layout.twig" %}
+
+{% block cor_css %}employee_detail{% endblock %}
+
+{% block title %}Detail zaměstnance{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h1>Detail:</h1>
+        <dl>
+            <div class="info_wrap">
+                <div class="photo">
+                    <dt>Jméno</dt>
+                    <dd>{{emp.getFirstName()}} {{emp.getLastName()}}</dd>
+
+                    <div class="infos">
+                        <img src="/img/employee{{emp.id}}.jpg">
+                    </div>
+                </div>
+
+                <div class="information">
+                    <dt>Funkce</dt>
+                    <dd>
+                        <ol>
+                            {% for position in emp.getPositions() %}
+                                <li>
+                                    <p>{{position.getTitle()}}</p>
+                                </li>
+                            {% endfor %}
+                        </ol>
+                    </dd>
+
+                    <div class="contact_wrap">
+                        <dt>Kontakt</dt>
+                        <dd>
+                            <ol>
+                                <li>
+                                    <dt>Telefon</dt>
+                                    <dd><a href="tel:{{emp.getTelephone()}}">{{emp.getTelephone()}}</a></dd>
+                                </li>
+                                <li>
+                                    <dt>Email</dt>
+                                    <dd><a href="mailto:{{emp.getEmail()}}">{{emp.getEmail()}}</a></dd>
+                                </li>
+                                <li>
+                                    <dt>Web Page</dt>
+                                    <dd><a target="_blank" href="https://www.{{emp.getWebPage()}}">{{emp.getWebPage()}}</a></dd>
+                                </li>
+                            </ol>
+                        </dd>
+                    </div>
+                </div>
+                <div class="other">
+                    <div class="about_wrap">
+                        <dt>Popis<dt>
+                        <dd><p id="about">{{emp.getInfo()}}</p></dd>
+                    </div>
+                    <div class="accounts">
+                        <dt>Účty<dt>
+                            <a href="{{path('employee_accounts_detail', {'id': emp.getId()})}}">Seznam účtů</a>
+                    </div>
+                    <a href="{{path('create_edit_user', {'id': emp.getId()})}}">Upravit/Smazat profil</a>
+                </div>
+            </div>
+        </dl>
+    </div>
+{% endblock %}

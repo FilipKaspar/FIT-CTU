@@ -1,0 +1,15 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ [
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-3.csv#gameName> "League of Legends"^^xsd:normalizedString;
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-3.csv#iri> "games:LOL"^^xsd:anyURI;
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-3.csv#revenue> 1750000000
+  ] .
+
+ [
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-3.csv#gameName> "Crysis 1"^^xsd:normalizedString;
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-3.csv#iri> "games:Crysis"^^xsd:anyURI;
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-3.csv#revenue> 180000000
+  ] .
+
+ [<file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-3.csv#iri> "games:Human_Machine_Resource"^^xsd:anyURI] .

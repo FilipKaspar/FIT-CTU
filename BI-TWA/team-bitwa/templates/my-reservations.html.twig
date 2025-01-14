@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Moje rezervace{% endblock %}
+
+{% block js %}
+    <script src="/js/my-reservations.js" defer></script>
+{% endblock %}
+
+{% block content %}
+    <h1>Moje rezervace</h1>
+
+    <h2>Mnou vytvořené rezervace</h2>
+
+    {% if myReservations is empty %}
+
+        <p>Zatím jste nevytvořil žádnou rezervaci.</p>
+
+    {% else %}
+
+        <table>
+            <thead>
+            <tr>
+                <th>Číslo rezervace</th>
+                <th>Schváleno</th>
+                <th>Učebna</th>
+                <th>Rezervováno od</th>
+                <th>Rezervováno do</th>
+                <th>Vytvořil</th>
+                <th>Na jméno</th>
+                <th>Počet osob</th>
+                <th colspan="2">Akce</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for reservation in myReservations %}
+                <tr id="reservation-{{ reservation.id }}">
+                    <td>#{{ reservation.id }}</td>
+                    <td>
+                        {% if reservation.isApproved %}
+                            &#10003; Ano
+                        {% else %}
+                            &#10007; Ne
+                        {% endif %}
+                    </td>
+                    <td>{{ reservation.room.building }}:<b>{{ reservation.room.name }}</b></td>
+                    <td>{{ reservation.timeFrom | date('d. m. Y H:i') }}</td>
+                    <td>{{ reservation.timeTo | date('d. m. Y H:i') }}</td>
+                    <td>{{ reservation.author.name }}</td>
+                    <td>{{ reservation.responsibleUser.name }}</td>
+                    <td>{{ reservation.invitedUsers | length }}</td>
+                    <td>
+                        <a href="{{ path('app_reservation_edit', {'reservationId': reservation.id}) }}">
+                            <img class="edit-icon" src="/images/edit.svg" alt="Upravit osoby">
+                            <span>Upravit osoby</span>
+                        </a>
+                    </td>
+                    <td>
+                        <button class="danger" onclick="deleteReservation({{ reservation.id }}, '{{ reservation.room.getFullName() }}',
+                              '{{ reservation.timeFrom | date('d. m. Y H:i') }}')">
+                            <img class="wide a" src="/images/trash-red.svg" alt="Zrušit rezervaci">
+                            <span>Zrušit</span>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% endif %}
+
+    <h2>Všechny rezervace, kam jsem pozvaný</h2>
+
+    {% if invitations is empty %}
+
+        <p>Zatím jste nebyli přizváni k žádné rezervaci.</p>
+
+    {% else %}
+
+        <table>
+            <thead>
+            <tr>
+                <th>Číslo rezervace</th>
+                <th>Schváleno</th>
+                <th>Učebna</th>
+                <th>Rezervováno od</th>
+                <th>Rezervováno do</th>
+                <th>Vytvořil</th>
+                <th>Na jméno</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for reservation in invitations %}
+                <tr>
+                    <td>#{{ reservation.id }}</td>
+                    <td>
+                        {% if reservation.isApproved %}
+                            &#10003; Ano
+                        {% else %}
+                            &#10007; Ne
+                        {% endif %}
+                    </td>
+                    <td>{{ reservation.room.building }}:<b>{{ reservation.room.name }}</b></td>
+                    <td>{{ reservation.timeFrom | date('d. m. Y H:i') }}</td>
+                    <td>{{ reservation.timeTo | date('d. m. Y H:i') }}</td>
+                    <td>{{ reservation.author.name }}</b></td>
+                    <td>{{ reservation.responsibleUser.name }}</b></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% endif %}
+
+{% endblock %}

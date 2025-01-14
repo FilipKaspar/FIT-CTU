@@ -1,0 +1,17 @@
+{% extends "layout.twig" %}
+
+{% block cor_css %}create_edit_user{% endblock %}
+{% block extra_links %}<script rel="stylesheet" src="/js/create_edit_user.js" defer></script>{% endblock %}
+
+{% block title %}Tvorba/Změna zaměstnance{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h1 id="headline">Zaměstnanec:</h1>
+        <div class="table_wrap">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

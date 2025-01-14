@@ -1,0 +1,1 @@
+{"Name" : ."@graph"[0].developerName.en, "Years of experience" : ."@graph"[0].years_of_experience}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
+<xs:include schemaLocation="langtag.xsd"/>
+    <xs:element name="iri" type="xs:string"/>
+    <xs:element name="gameName" type="LangTag"/>
+    <xs:element name="revenue" type="xs:integer"/>
+    <xs:element name="Game">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="iri"/>
+                <xs:element ref="gameName" minOccurs="0"/>
+                <xs:element ref="revenue" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Games">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Game" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

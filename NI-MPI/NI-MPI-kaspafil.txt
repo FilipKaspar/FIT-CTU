@@ -1,0 +1,70 @@
+Závěrečné hodnocení: 6 z 10 bodů
+
+# Kritérium konvergence 1 ||x^{k-1} - x^k||
+
+## Napočítané výsledky
+
+(
+Můžete uvést i více výsledků, pokud vám to přijde relevantní. V tom případě popište, v čem se lišilo nastavení.
+Pokud algoritmus nezkonvergoval, napište "NEZKONVERGOVAL"
+)
+
+### Výsledek 1
+
+//(index, hodnota), 5 největších hodnot z vlastniho vektoru
+(9666, 0.00117)
+(110200, 0.00117)
+(20996, 0.00113)
+(37608, 0.00112)
+(78731, 0.00109)
+
+//vl. číslo
+746.99207
+
+//počet iterací
+25
+
+## Komentáře k výsledkům nebo k nastavení algoritmu
+(Není nutné)
+
+
+# Kritérium konvergence 2 ||Ax^k - lambda^kx^k||
+(použijte stejný formát jako pro kritérium 1)
+
+## Napočítané výsledky
+
+### Výsledek 2
+
+Druhé kritérium konvergence nezkonvergovalo k žádnému řešení do daného maximálního počtu kroků.
+
+# Odpovědi na otázky
+(odpovězte stručně na dané otázky, vždy uveďte zdůvodnění)
+
+## Pokud některý z běhu algoritmu nenašel řešení, napište váš názor na důvod, proč se tak stalo
+
+Druhé kritérium konvergence nezkonvergovalo k žádnému řešení.
+Myslím si, že by to mohlo být tím, že druhé kritérium konvergence mi přijde "přísnější" než první kritérium. Zároveň by se dalo zvednout maximální počet iterací, což by také nejspíše zvedlo šanci na zkonvergování.
+Pokud snížíme toleranci na 1e-3, tak dostáváme výsledek dominantního vlastního vektoru rovnému číslu 746.99176.
+
+## Mocninná metoda má nějaké předpoklady: napište, jaké lze ověřit a jak, dále uveďte, zda a co je možné konstatovat na toto téma zpětně na základě získaných výsledků (a průběhu algoritmu); pokud nějaký předpoklad navíc i ověříte, napište, jak to bylo výpočetně náročné
+
+Předpoklady:
+
+Matice musí být čtvercová - Lze ověřit před spuštěním algoritmu. Porovnáme počet řádku a sloupců matice.
+
+Jedinečné dominantní číslo - Matice musí mít jedinečné vlastní číslo, které je v absolutní hodnotě větší jak ostatní. Toto se těžko ověřuje před spuštěním algortmu. Pokud ale algoritmus konverguje k jednomu vlastním číslu, značí to, že matice má jedno dominantní vlastní číslo. Pokud se ovšem nepřibližuje ke stabilní hodnotě a "uhybá", tak se v matici nejspíše nachází vícero dominantních vlastních čísel.
+
+Startovní vektor x0 nesmí být kolmý na dominantní vlastní vektor - Toto se taktéž nedá jednoduše ověřit, jelikož neznáme vlastní vektor. Většinou se tedy bere náhodný startovní vektor.
+
+Ireducibilita - Matice by měla být ireducibilní (graf by měl být silně souvislý). Toto lze ověřit před spuštěním algoritmu.
+
+Pak máme pár podmínek, které nejsou vyloženě nutné pro mocninou metodu, ale značně snižují její náročnost. Např. matice by měla být nezáporná, nebo že by matice měla být tzv. diagonálně dominovaná
+
+## Lze čekat, že se se běh algoritmu nějak změní, když použijete dvojitou přesnost? Odpověď zdůvodněte (ano, můžete si program spustit, ale zkuste to odhadnout předem)
+
+Ano lze, jelikož dvojitá přesnost má větší mantisu a tím pádem umožní přesnější výsledky výpočtů. Menší chyby při výpočtech by mohli urychlit konvergenci. Na druhou stranu dvojitá přesnost je náročnější na pamět i výkon, nicméně rozdíl je v dnešní době poměrně zanedbatelný.
+Jako ověření jsem spustil druhé kritérium s dvojitou přesností a to mi zkonvergovalo k nějakému řešení :)
+
+# Jiné komentáře
+
+Nejspíše nic :)

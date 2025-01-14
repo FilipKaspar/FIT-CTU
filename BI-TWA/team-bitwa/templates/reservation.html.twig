@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rezervace učebny{% endblock %}
+
+{% block content %}
+    <h1>Rezervace učebny {{ room.getFullName() }}</h1>
+
+    {{ form(form) }}
+{% endblock %}

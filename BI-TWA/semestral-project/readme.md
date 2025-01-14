@@ -1,0 +1,1 @@
+Semestral work for class BI-TWA

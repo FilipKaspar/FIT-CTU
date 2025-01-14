@@ -1,0 +1,53 @@
+a, .a {
+    color: hsl(208, 90%, 35%);
+    text-decoration: none;
+}
+
+.a {
+    cursor: pointer;
+}
+
+a:visited {
+    color: hsl(208, 90%, 35%);
+}
+
+a:hover, .a:hover {
+    color: hsl(208, 90%, 45%);
+    text-decoration: underline;
+}
+
+button {
+    background: #eeeeee;
+    border: 0.12em solid #666666;
+    border-radius: 0.5em;
+    font-family: inherit;
+    padding: 0.4em;
+    font-size: 0.85em;
+}
+
+button:hover {
+    background: #c9c9c9;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+button:has(img), button:has(img):hover {
+    background: unset;
+    border: unset;
+}
+
+a:has(img), button:has(img) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: unset;
+}
+
+ul {
+    margin: 0.2em 0;
+}
+
+h3 {
+    margin: 1em 0 0.5rem 0;
+}
+

@@ -1,0 +1,35 @@
+{% extends "layout.twig" %}
+
+{% block cor_css %}index{% endblock %}
+{% block extra_links %}<script rel="stylesheet" src="/js/index.js" defer></script>{% endblock %}
+
+{% block title %}Titulní strana{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h2>Tato stránka slouží k evidenci zaměstnanců.</h2>
+        <p id="list_text">Níže si můžete projít nejnovější zaměstnance:</p>
+        <div class="list_wrapper">
+            <ol>
+                {% for employee in employees|slice(0, 4) %}
+                    <li>
+                        <p>{{employee.getFirstName()}} {{employee.getLastName()}}</p>
+                        <a href="{{path('employee_detail', {'id': employee.getId()})}}"><img src="img/employee{{employee.getId()}}.jpg"></a>
+                    </li>
+                {% endfor %}
+            </ol>
+        </div>
+        <button id="openModalBtn" class="openModal">Více informací o systému</button>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="closeModal" onclick="myModal.closeModal()">&times;</span>
+                <p>Hrozně důležité informace o systému.<p>
+                <p>Dolor eligendi ex delectus ut ipsum quos. Laboriosam aut et ducimus placeat repudiandae. Similique nemo repudiandae dicta molestiae cumque officiis ipsa ex. Ipsum atque error et illum. Vel sit quis earum et et iste ab animi. In voluptatem vel voluptates sunt et at reprehenderit.</p>
+                <p>Lure Her InSum.</p>
+                <p>Voluptas ex a beatae eveniet accusamus. Et exercitationem quam aut facilis amet unde quia repudiandae. Et ab sunt minima sed ab.</p>
+                <p>Sint est reiciendis tempore. Est sint modi excepturi a minima. Numquam blanditiis quia similique. Et autem placeat ad quis qui sint et. Numquam eaque quia et.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

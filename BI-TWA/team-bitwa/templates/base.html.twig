@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Rezervační systém učeben{% endblock %}</title>
+
+    <script src="/js/Modal.js"></script>
+    {% block js %}{% endblock %}
+
+    <link rel="stylesheet" href="/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&amp;display=swap"
+          rel="stylesheet">
+</head>
+<body>
+
+<header>
+
+    <nav>
+        {% if is_granted('IS_AUTHENTICATED') %}
+            <span class="nav-item"><a href="{{ path('app_rooms') }}">Učebny</a></span>
+            <span class="nav-item"><a href="{{ path('app_users') }}">Uživatelé</a></span>
+            <span class="nav-item"><a href="{{ path('app_reservations_my') }}">Moje rezervace</a></span>
+            <span class="nav-item">
+                <a href="{{ path('app_reservations_managed') }}">
+                    {% if is_granted('ROLE_ADMIN') %}
+                        Všechny rezervace
+                    {% else %}
+                        Spravované rezervace
+                    {% endif %}
+                </a>
+            </span>
+            {% if is_granted('ROLE_ADMIN') %}
+                <span class="nav-item"><a href="{{ path('app_groups') }}">Správa skupin</a></span>
+            {% endif %}
+        {% endif %}
+    </nav>
+
+    <div class="user-info">
+        {% if is_granted('IS_AUTHENTICATED') %}
+            <div class="login-info">Jste přihlášen jako <b>{{ app.user.name }}</b> ({{ app.user.email }})</div>
+            <a id="profile-icon-link" href="{{ path('app_user_profile', {"userId" : app.user.id}) }}">
+                <img id="profile-icon" src="/images/user-profile.svg" alt="Zobrazit uživatelský profil">
+            </a>
+            <form id="logout-form" action="{{ path('app_logout') }}" method="get">
+                <button type="submit">Odhlásit se</button>
+            </form>
+        {% else %}
+            <div class="login-info">Nejste přihlášen</div>
+            <a href="{{ path('app_login') }}">Přihlásit se</a>
+            <!-- <a href="{{ path('app_register') }}">Vytvořit účet</a> -->
+        {% endif %}
+    </div>
+</header>
+
+{% for flashType, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="flash flash-{{ flashType }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+</body>
+</html>

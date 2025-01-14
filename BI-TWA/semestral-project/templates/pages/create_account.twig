@@ -1,0 +1,28 @@
+{% extends "layout.twig" %}
+
+{% block cor_css %}create_edit_account{% endblock %}
+{% block extra_links %}
+    <script rel="stylesheet" src="/js/create_edit_account.js" defer></script>
+{% endblock %}
+
+{% block title %}Tvorba/Změna účtu{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h1 id="headline">Účet:</h1>
+        <div class="table_wrap">
+            {{ form_start(form, {'attr': {'id': 'my-form'}}) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+        <div class="dropdown-container">
+            <button id="dropdownBtn">Show Dropdown</button>
+            <div class="dropdown-content" id="myDropdown">
+                <span>🛬</span>
+                <span>🛰️</span>
+                <span>🪂</span>
+                <span>🚁</span>
+            </div>
+        </div>
+    </div>
+{% endblock %}

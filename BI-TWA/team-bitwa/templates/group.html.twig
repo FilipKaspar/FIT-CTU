@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Skupina {{ group.name }}{% endblock %}
+
+{% block js %}
+    <script src="/js/group.js" defer></script>
+{% endblock %}
+
+{% block content %}
+    <h1>Skupina {{ group.name }}</h1>
+    <b>Nadřazená skupina:</b>
+    <span>
+        {% if group.parent %}
+            <a href="{{ path('app_group', {'id': group.parent.id}) }}">{{ group.parent.name }}</a>
+        {% else %}
+            <span class="extra">žádná</span>
+        {% endif %}
+    </span>
+
+    <h2>Správci</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Jméno</th>
+            <th>Akce</th>
+        </tr>
+        </thead>
+        <tbody  id="managers_table_body">
+        {% if group.managers is empty %}
+            <tr>
+                <td class="center" colspan="2">Žádní správci</td>
+            </tr>
+        {% endif %}
+{#        {% for manager in group.managers %}#}
+{#            <tr id="manager-{{ manager.id }}">#}
+{#                <td>#}
+{#                    <a href="/users/{{ manager.id }}">{{ manager.name }}</a>#}
+{#                </td>#}
+{#                {% if is_granted('ROLE_ADMIN') %}#}
+{#                <td>#}
+{#                    <button class="danger" onclick="deleteManagerFromGroup({{ group.id }}, '{{ group.name }}', {{ manager.id }}, '{{ manager.name }}')">#}
+{#                        <img class="wide a" src="/images/trash-red.svg" alt="Odebrat správce ze skupiny">#}
+{#                        <span>Odebrat</span>#}
+{#                    </button>#}
+{#                </td>#}
+{#                {% endif %}#}
+{#            </tr>#}
+{#        {% endfor %}#}
+        </tbody>
+    </table>
+
+    <h2>Členové</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Jméno</th>
+            <th>Akce</th>
+        </tr>
+        </thead>
+        <tbody id="members_table_body">
+        {% if group.members is empty %}
+            <tr>
+                <td class="center" colspan="2">Žádní členové</td>
+            </tr>
+        {% endif %}
+{#        {% for member in group.members %}#}
+{#            <tr id="member-{{ member.id }}">#}
+{#                <td>#}
+{#                    <a href="/users/{{ member.id }}">{{ member.name }}</a>#}
+{#                </td>#}
+{#                {% if is_granted('ROLE_ADMIN') %}#}
+{#                    <td>#}
+{#                        <button class="danger" onclick="deleteMemberFromGroup({{ group.id }}, '{{ group.name }}', {{ member.id }}, '{{ member.name }}')">#}
+{#                            <img class="wide a" src="/images/trash-red.svg" alt="Odebrat člena ze skupiny">#}
+{#                            <span>Odebrat</span>#}
+{#                        </button>#}
+{#                    </td>#}
+{#                {% endif %}#}
+{#            </tr>#}
+{#        {% endfor %}#}
+        </tbody>
+    </table>
+
+    <h2>Učebny</h2>
+    <ul>
+        {% if group.rooms is empty %}
+            <li class="extra">Žádné učebny</li>
+        {% endif %}
+        {% for room in group.rooms %}
+            <li><a href="{{ path('app_room', {'id': room.id}) }}">{{ room.getFullName() }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Podskupiny</h2>
+    <ul>
+        {% if group.childGroups is empty %}
+            <li class="extra">Žádné podskupiny</li>
+        {% endif %}
+        {% for subgroup in group.childGroups %}
+            <li><a href="{{ path('app_group', {'id': subgroup.id}) }}">{{ subgroup.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <form id="new-group-form" action="{{ path('app_group_new_admin_or_user', {'groupId' : group.id}) }}" method="post">
+            <h2>Přidat správce nebo člena</h2>
+            <div class="form-fields" id="group-form-add" data-group-id="{{ group.id }}" data-group-name="{{ group.name }}">
+                <label for="user_name">Vyberte uživatele:</label>
+                <select name="_user_name" id="new_group">
+                    {% for user in users | sort((a, b) => a.name <=> b.name) %}
+                        <option value="{{ user.id }}">{{ user.name }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="role_option">Vyberte roli:</label>
+                <select name="_role_option" id="selected_role">
+                    <option value="1">Správce</option>
+                    <option value="2">Člen</option>
+                </select>
+            </div>
+            <button type="submit" id="submit-new-manager-member">Přidat do skupiny</button>
+        </form>
+    {% endif %}
+{% endblock %}

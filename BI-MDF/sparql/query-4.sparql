@@ -1,0 +1,26 @@
+# Is there a store with a name Ubisoft and at least 5 reputation that publishes Crysis 1?
+
+PREFIX ex: <https://example.com/>
+PREFIX stores: <https://example.org/stores/>
+PREFIX games: <https://example.org/games/>
+
+ASK
+{
+    ?Games ex:gameName ?Name .
+    {
+        SELECT ?Publisher ?Game
+        WHERE{
+            ?Publisher ex:publishes ?Game ;
+            {
+                SELECT ?Store
+                WHERE{
+                ?Store ex:storeName ?Store_Name ;
+                    ex:reputation ?Reputation .
+                FILTER(STR(?Store_Name) = "Ubisoft" && ?Reputation >= 5)
+                }
+            }
+            FILTER(STR(?Publisher) = STR(?Store))
+        }
+    }
+    FILTER(STR(?Games) = STR(?Game) && STR(?Name) = "Crysis 1")
+}

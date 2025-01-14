@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Přihlášení{% endblock %}
+
+{% block content %}
+
+    <h1>Přihlášení</h1>
+
+    {% if error %}
+        <p class="danger">Chyba s přihlášením, zkontrolujte si přihlašovací údaje</p>
+    {% endif %}
+
+    <form id="login-form" action="{{ path('app_login') }}" method="post">
+        <div class="form-fields">
+            <label for="username">E-mail:</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}">
+
+            <label for="password">Heslo:</label>
+            <input type="password" id="password" name="_password">
+
+            <input type="hidden" name="_target_path" value="/">
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        </div>
+
+        <button type="submit">Přihlásit se</button>
+    </form>
+
+{% endblock %}

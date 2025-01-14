@@ -1,0 +1,13 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ [
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-1.csv#iri> "players:Petr"^^xsd:anyURI;
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-1.csv#nickname> "Fregy"^^xsd:normalizedString;
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-1.csv#playerName> "Petros"^^xsd:normalizedString
+  ] .
+
+ [
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-1.csv#iri> "players:Karel"^^xsd:anyURI;
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-1.csv#nickname> "Zdp4XXX"^^xsd:normalizedString;
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-1.csv#playerName> "Zdepa"^^xsd:normalizedString
+  ] .

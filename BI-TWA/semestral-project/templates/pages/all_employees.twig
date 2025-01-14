@@ -1,0 +1,44 @@
+{% extends "layout.twig" %}
+
+{% block cor_css %}search_result{% endblock %}
+
+{% block title %}Výsledky vyhledávání{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h1>Výsledky vyhledávání:</h1>
+        <section>
+            <div class="one_result">
+                <dl>
+                    {% for employee in employees %}
+                        <div class="info_wrapper">
+                            <img src="img/employee{{employee.getId()}}.jpg">
+                            <div class="info">
+                                <dt>Jméno</dt>
+                                <dd>{{employee.getFirstName()}} {{employee.getLastName()}}</dd>
+
+                                <dt>Hlavní Funkce</dt>
+                                <dd>{{employee.getPositions()[0].getTitle()}}</dd>
+
+                                <dt>E-mail</dt>
+                                <dd><a href="mailto:{{employee.getEmail()}}">{{employee.getEmail()}}</a></dd>
+
+                                <dt>Odkazy</dt>
+                                <dd>
+                                    <ol>
+                                        <li>
+                                            <a href="{{path('employee_detail', {'id': employee.getId()})}}">Detail profilu</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{path('create_edit_user', {'id': employee.getId()})}}">Upravit/Smazat profil</a>
+                                        </li>
+                                    </ol>
+                                </dd>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </dl>
+            </div>
+        </section>
+    </div>
+{% endblock %}

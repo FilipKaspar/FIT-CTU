@@ -1,0 +1,18 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ [
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-4.csv#developerName> "Electronic Arts"^^xsd:normalizedString;
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-4.csv#iri> "developers:EA"^^xsd:anyURI;
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-4.csv#years_of_experience> "30"^^xsd:nonNegativeInteger
+  ] .
+
+ [
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-4.csv#developerName> "Valve Corporation"^^xsd:normalizedString;
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-4.csv#iri> "developers:Valve"^^xsd:anyURI;
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-4.csv#years_of_experience> "26"^^xsd:nonNegativeInteger
+  ] .
+
+ [
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-4.csv#developerName> "Activision"^^xsd:normalizedString;
+    <file:/mnt/c/Users/filou/Desktop/School/CVUT_FIT/3rd_Semester/MDF/kaspafil/csv/data-4.csv#iri> "developers:Activision"^^xsd:anyURI
+  ] .

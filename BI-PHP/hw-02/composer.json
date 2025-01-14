@@ -1,0 +1,21 @@
+{
+  "name": "cvut/bi-php-hw-2",
+  "description": "HW-2 for BI-PHP",
+  "type": "project",
+  "autoload": {
+    "files": ["src/shopping.php"]
+  },
+  "authors": [
+    {
+      "name": "Andrii Plyskach",
+      "email": "plyskand@fit.cvut.cz"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "^10.3",
+    "psy/psysh": "^0.11.21"
+  },
+  "scripts": {
+    "test": "./vendor/bin/phpunit tests/public"
+  }
+}

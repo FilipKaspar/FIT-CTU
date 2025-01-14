@@ -1,0 +1,3 @@
+Obrazec #1
+Obrazec #2
+Nespravny vstup.

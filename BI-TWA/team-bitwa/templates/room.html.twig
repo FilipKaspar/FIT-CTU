@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Učebna {{ room.getFullName() }}{% endblock %}
+
+{% block js %}
+    <script src="/js/room.js" defer></script>
+{% endblock %}
+
+{% block content %}
+    <h1>Učebna {{ room.getFullName() }}</h1>
+    <div id="top-block" class="form-block" data-room-id="{{ room.id }}" data-room-name="{{ room.getFullName() }}">
+        <section class="info">
+            <span>Budova:</span>
+            <span>{{ room.building }}{% if is_granted('ROLE_ADMIN') %} <a href="#" class="modal-link" id="change-building-name-button">(změnit)</a>{% endif %}</span>
+
+            <span>Učebna:</span>
+            <span>{{ room.name }}{% if is_granted('ROLE_ADMIN') %} <a href="#" class="modal-link" id="change-room-name-button">(změnit)</a>{% endif %}</span>
+
+            <span>Stav:</span>
+            <span>{% if is_occupied %}Obsazená{% else %}Volná{% endif %}</span>
+
+            <span>Přístupnost</span>
+            <span>
+                {% if room.isPublic %}
+                    Veřejná
+                {% else %}
+                    Soukromá
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %} <a href="#" class="modal-link" id="change-public-button">(změnit)</a>{% endif %}
+            </span>
+
+            <span>Skupina</span>
+            <span>
+                {% if room.group %}
+                    {{ room.group.name }}
+                {% else %}
+                    Žádná skupina
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %} <a href="#" class="modal-link" id="change-group-button">(změnit)</a>{% endif %}
+            </span>
+
+            <span>Mám přístup?</span>
+            <span>{% if is_bookable %}Ano{% else %}Ne{% endif %}</span>
+
+            {% if is_bookable or is_granted('ROLE_ADMIN') %}
+                <span>Rezervace</span>
+                <a href="{{ path('app_book', {'room': room.id}) }}">
+                    Rezervovat{% if is_manageable or is_granted('ROLE_ADMIN') %} jako správce{% endif %}
+                </a>
+            {% endif %}
+        </section>
+
+        <div>
+            <h3>Správci</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th>Jméno</th>
+                    {% if is_granted('ROLE_ADMIN') or is_group_manageable %}
+                        <th>Akce</th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody id="managers-table-body">
+                {% if room.managers is empty %}
+                    <tr>
+                        <td colSpan="{% if is_granted('ROLE_ADMIN') or is_group_manageable %}2{% else %}1{% endif %}">Žádný správce</td>
+                    </tr>
+                {% endif %}
+                {% for manager in room.managers %}
+                    <tr id="manager-{{ manager.id }}">
+                        <td>{{ manager.name }}</td>
+                        {% if is_granted('ROLE_ADMIN') or is_group_manageable %}
+                            <td>
+                                <button class="danger" onclick="deleteManagerFromRoom({{ room.id }}, '{{ room.name }}', {{ manager.id }}, '{{ manager.name }}')">
+                                    <img class="wide a" src="/images/trash-red.svg" alt="Odebrat správce">
+                                    <span>Odebrat</span>
+                                </button>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                {% if is_granted('ROLE_ADMIN') or is_group_manageable %}
+                    <tr>
+                        <td colspan="2" class="center"><a id="new-manager-button" href="#">Přidat správce</a></td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+
+            {% if is_granted('ROLE_ADMIN') or is_group_manageable %}
+                <div id="new-manager-modal" class="modal-shade">
+                    <form id="new-manager-form" class="modal-window">
+                        <h2>Přidat správce</h2>
+                        <label for="new-manager">Vyberte nového správce</label>
+                        <select id="new-manager" name="new-manager">
+                            {% for manager_option in manager_options %}
+                                <option value="{{ manager_option.id }}">{{ manager_option.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit" id="new-manager-save-button">Přidat správce</button>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <div id="change-room-name-modal" class="modal-shade">
+                <form class="modal-window" action="{{ path('app_room_change_room', {'id': room.id}) }}" method="post">
+                    <h2>Změnit název učebny</h2>
+                    <div class="form-fields">
+                        <label for="room">Nový název učebny</label>
+                        <input type="text" id="room" name="_room" required>
+                    </div>
+
+                    <button type="submit">Změnit název učebny</button>
+                </form>
+            </div>
+
+            <div id="change-building-name-modal" class="modal-shade">
+                <form class="modal-window" action="{{ path('app_room_change_building', {'id': room.id}) }}" method="post">
+                    <h2>Změnit název budovy</h2>
+                    <div class="form-fields">
+                        <label for="building">Nový název budovy</label>
+                        <input type="text" id="building" name="_building" required>
+                    </div>
+
+                    <button type="submit">Změnit název budovy</button>
+                </form>
+            </div>
+
+            <div id="change-public-modal" class="modal-shade">
+                <form class="modal-window" action="{{ path('app_room_change_availability_for_the_public', {'id': room.id}) }}" method="post">
+                    <h2>Změnit přístupnost</h2>
+                    <div class="form-fields">
+                        <label for="is_public">Je veřejnosti přístupná</label>
+                        <input type="checkbox" id="is_public" name="_is_public" {% if room.isPublic %}checked{% endif %}>
+                    </div>
+
+                    <button type="submit">Změnit přístupnost pro veřejnost</button>
+                </form>
+            </div>
+
+            <div id="change-group-modal" class="modal-shade">
+                <form class="modal-window" action="{{ path('app_room_change_group', {'roomId': room.id}) }}" method="post">
+                    <h2>Změnit skupinu</h2>
+                    <div class="form-fields">
+                        <label for="group">Vyberte skupinu, do které má učebna spadat</label>
+                        <select name="_group" id="group">
+                            <option value="-1">Žádná</option>
+                            {% for existingGroup in groups | sort((a, b) => a.name <=> b.name) %}
+                                <option value="{{ existingGroup.id }}">{{ existingGroup.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <button type="submit">Změnit skupinu</button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

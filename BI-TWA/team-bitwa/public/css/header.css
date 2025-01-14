@@ -1,0 +1,56 @@
+header {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background: white;
+    border-radius: 0.4em;
+    padding: 0.5em;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0.07em 0.25em rgba(143, 147, 162, 0.6);
+}
+
+header nav {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1.3em;
+    row-gap: 0.6em;
+}
+
+header nav span {
+    font-size: 2em;
+}
+
+header nav .nav-item {
+    font-size: 1.5em;
+}
+
+header .user-info {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+header .user-info .login-info {
+    font-size: 1.2em;
+}
+
+#logout-form > button {
+    margin: 0.3em;
+}
+
+#profile-icon {
+    width: 1.5em;
+    padding: 0.2em;
+    border: 0.15em solid hsl(227, 79%, 42%);
+    border-radius: 0.4em;
+    transition: 300ms ease;
+}
+
+#profile-icon-link {
+    display: flex;
+}
+
+#profile-icon:hover {
+    background: rgba(0, 255, 255, 0.65);
+}

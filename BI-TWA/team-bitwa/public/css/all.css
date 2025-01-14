@@ -1,0 +1,60 @@
+@import 'header.css';
+@import 'table.css';
+@import 'elements.css';
+@import 'form.css';
+@import 'modal.css';
+@import 'reservation.css';
+@import 'other.css';
+
+body {
+    background: hsl(200, 100%, 88%);
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1.2em;
+}
+
+main {
+    padding: 0 5em 5em 5em;
+}
+
+.flash {
+    position: fixed;
+    bottom: 3rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.3em 1em;
+    border-radius: 1em 1em;
+    font-size: 1.2em;
+    color: white;
+}
+
+.flash-success {
+    background-color: rgb(43, 114, 3);
+}
+
+.flash-error {
+    background-color: rgb(148, 3, 3);
+}
+
+.danger {
+    color: rgb(148, 3, 3);
+}
+
+.extra {
+    color: rgb(110, 110, 110);
+}
+
+.center {
+    text-align: center;
+}
+
+.modal-link {
+    font-size: 0.8rem;
+}
+
+.wide {
+    padding: 0 0.27em;
+}
+
+.a {
+    cursor: pointer;
+}

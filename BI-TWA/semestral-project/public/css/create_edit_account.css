@@ -1,0 +1,32 @@
+.content > * input, select {
+    width: 100%;
+    padding: 0.4rem 0.5rem;
+    font-size: 1rem;
+}
+
+.content > * button {
+    margin: 1rem 0;
+    padding: 0.5rem 3rem;
+    font-size: 1rem;
+}
+
+.content > * input {
+    border-radius: 0.4rem;
+}
+
+.btn-container {
+    display: flex;
+}
+
+.dropdown-content {
+    display: none;
+}
+
+.dropdown-content > span {
+    display: block;
+}
+
+.dropdown-content a {
+    font-size: var(--fontsize_big);
+    color: var(--color_orange);
+}

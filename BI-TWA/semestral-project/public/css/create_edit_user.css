@@ -1,0 +1,20 @@
+.content > * input, select {
+    width: 100%;
+    padding: 0.4rem 0.5rem;
+    font-size: 1rem;
+}
+
+.content > * button {
+    margin: 1rem 0;
+    padding: 0.5rem 3rem;
+    font-size: 1rem;
+}
+
+.content > * input {
+    border-radius: 0.4rem;
+}
+
+.content > * input[type='checkbox'] {
+    width: auto;
+    margin: 0 0.5rem 0 0.5rem;
+}

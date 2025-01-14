@@ -1,0 +1,73 @@
+input {
+    box-sizing: border-box;
+    border-radius: 0.35em;
+    border: 0.1em groove gray;
+    font-size: 0.86em;
+}
+
+input:hover, input:focus {
+    border-color: black;
+}
+
+input[type="checkbox"] {
+    width: 1.2em;
+    height: 1.2em;
+}
+
+form:not(#logout-form) {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    align-self: center;
+    justify-self: center;
+    margin: 1em 0.6em;
+    border-radius: 0.4em;
+}
+
+form:not(#logout-form) button {
+    align-self: center;
+    margin: 0.2em 0 0.5em 0;
+}
+
+form label.required:after {
+    content: " *";
+}
+
+form > .form-fields {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    grid-gap: 0.7em;
+    margin: 1em;
+}
+
+form > .form-fields > :nth-child(odd) {
+    justify-self: end;
+}
+
+form > .form-fields > :nth-child(even) {
+    justify-self: start;
+}
+
+form .label-input {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2em;
+}
+
+form > h2 {
+    place-self: center;
+    font-weight: bold;
+    margin: 0.2em;
+}
+
+.form-block {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+form#login-form, form#new-group-form {
+    width: fit-content;
+}

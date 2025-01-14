@@ -1,0 +1,17 @@
+:root {
+    --margin_small: 1.25rem;
+    --margin_medium: 1.25rem;
+    --margin_big: 2rem;
+
+    --fontsize_small: 1.25rem;
+    --fontsize_medium: 1.5em;
+    --fontsize_big: 2.25rem;
+
+    --color_grey: #353535;
+    --color_orange: #e76f51;
+    --color_green: #2a9d8f;
+    --color_white: #d9d9d9;
+    --color_white_pink: #ffddd2;
+
+    --color_orange_visited: #6f392e;
+}

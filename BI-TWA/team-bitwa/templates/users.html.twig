@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Uživatelé{% endblock %}
+
+{% block js %}
+    <script src="/js/users.js" defer></script>
+{% endblock %}
+
+{% block content %}
+    <h1>Uživatelé</h1>
+
+    <table>
+        <thead>
+        <tr>
+            {% if is_granted("ROLE_ADMIN") %}
+                <th class="id-col">ID</th>
+            {% endif %}
+            <th>Jméno</th>
+            <th>E-mail</th>
+            {% if is_granted("ROLE_ADMIN") %}
+                <th>Role</th>
+                <th colspan="2">Akce</th>
+            {% endif %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr id="user-{{ user.id }}">
+                {% if is_granted("ROLE_ADMIN") %}
+                    <td class="id-col">{{ user.id }}</td>
+                {% endif %}
+                <td><b>{{ user.name }}</b></td>
+                <td>{{ user.email }}</td>
+                {% if is_granted("ROLE_ADMIN") %}
+                    <td>{{ user.roles | join(", ") }}</td>
+                    <td>
+                        <a id="edit-icon-link" href="{{ path('app_user_profile', {'userId' : user.id}) }}">
+                            <img class="edit-icon" src="/images/edit.svg" alt="Upravit uživatele">
+                            <span>Upravit</span>
+                        </a>
+                    </td>
+                    <td>
+                        <button class="danger" onclick="deleteUser({{ user.id }}, '{{ user.name }}')">
+                            <img class="wide a" src="/images/trash-red.svg" alt="Odebrat uživatele">
+                            <span>Odebrat</span>
+                        </button>
+                    </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        {% if is_granted('ROLE_ADMIN') %}
+            <tr>
+                <td colspan="6" class="center"><a id="new-user-button" href="#">Přidat uživatele</a></td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <div id="new-user-modal" class="modal-shade">
+            <form class="modal-window" id="addUser" action="{{ path('app_admin_create_user') }}" method="post">
+                <h2>Nový uživatel</h2>
+                <div class="form-fields">
+                    <label for="username">Uživatelské jméno:</label>
+                    <input type="text" id="username" name="_username"
+                           value="{{ previous_input.username | default('') }}" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="_email"
+                           value="{{ previous_input.email | default('') }}" required>
+
+                    <label for="password">Heslo:</label>
+                    <input type="password" id="password" name="_password"
+                           value="{{ previous_input.password | default('') }}" required>
+
+                    <label for="confirm_password">Potvrdit heslo:</label>
+                    <input type="password" id="confirm_password" name="_confirm_password"
+                           value="{{ previous_input.confirm_password | default('') }}" required>
+                </div>
+                <button type="submit">Vytvořit uživatele</button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

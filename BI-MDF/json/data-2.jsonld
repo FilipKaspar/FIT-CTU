@@ -1,0 +1,35 @@
+{
+    "@context" : {
+        "ex" : "https://example.com/",
+        "stores" : "https://example.org/stores/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "type" : "@type",
+        "iri" : "@id",
+        "storeName" : {
+            "@id" : "ex:storeName",
+            "@container" : "@language"
+        },
+        "reputation" : {
+            "@id" : "ex:reputation",
+            "@type" : "xsd:integer"
+        }
+    },
+    "@graph" : [
+        {
+            "type" : "ex:Store",
+            "iri" : "stores:Steam",
+            "storeName" : {
+                "en" : "Steam"
+            },
+            "reputation" : 8
+        },
+        {
+            "type" : "ex:Store",
+            "iri" : "stores:Ubisoft",
+            "storeName" : {
+                "en" : "Ubisoft"
+            },
+            "reputation" : 6
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Stores xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema-2.xsd">
+    <Store>
+        <iri>stores:Steam</iri>
+        <storeName xml:lang="en">Steam</storeName>
+        <reputation>8</reputation>
+    </Store>
+    <Store>
+        <iri>stores:Ubisoft</iri>
+        <storeName xml:lang="en">Ubisoft</storeName>
+        <reputation>6</reputation>
+    </Store>
+</Stores>

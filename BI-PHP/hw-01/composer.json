@@ -1,0 +1,11 @@
+{
+  "name": "cvut/bi-php-hw-01",
+  "description": "HW-01 for BI-PHP",
+  "type": "project",
+  "autoload": {
+    "files": ["src/game.php"]
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.3"
+  }
+}

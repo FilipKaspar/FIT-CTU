@@ -1,0 +1,22 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.org/public-contracts-schema.json",
+    "type" : "object",
+    "@graph": {  
+        "type": "array",
+        "title": "Developers",
+     	"items": {
+            "type": "object",
+            "iri": "Developer",
+            "minItems": 0,
+            "properties": {
+                "developerName": {
+                    "type": "string"
+                },
+                "years_of_experience": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

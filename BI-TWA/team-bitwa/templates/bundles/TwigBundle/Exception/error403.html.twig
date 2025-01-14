@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Přístup zamítnut{% endblock %}
+
+{% block content %}
+
+    <h1>Přístup zamítnut</h1>
+
+    <p>K této adrese nemáte přístup. Ujistěte se, že jste přihlášen správným účtem.</p>
+
+    <p>Důvod: {{ exception.message }}</p>
+
+{% endblock %}
