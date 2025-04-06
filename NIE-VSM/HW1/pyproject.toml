@@ -1,0 +1,13 @@
+[project]
+name = "nie-vsm"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "huffman>=0.1.2",
+    "jupyter>=1.1.1",
+    "matplotlib==3.7",
+    "nbconvert>=7.16.6",
+    "scipy>=1.15.2",
+]
